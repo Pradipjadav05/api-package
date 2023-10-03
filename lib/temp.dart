@@ -1,10 +1,10 @@
+import 'package:api_service_helper/api_service_helper.dart';
 import 'package:flutter/material.dart';
 
-import 'services/api_services.dart';
 import 'utils/api_utils.dart';
 
-class HomeScreen extends StatelessWidget {
-  const HomeScreen({Key? key}) : super(key: key);
+class Temp extends StatelessWidget {
+  const Temp({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -25,7 +25,7 @@ class HomeScreen extends StatelessWidget {
                 debugPrint("\n\n------------Login--------------\n");
                 ApiServices()
                     .request(ApiService.POST, ApiUtils.loginAPI,
-                        data: ApiUtils.loginBodyData)
+                    data: ApiUtils.loginBodyData)
                     .then((response) {
                   ApiUtils.authToken = response.data["DataModel"]["NewToken"];
                   debugPrint("Response Data: ${response.data}");
@@ -45,8 +45,8 @@ class HomeScreen extends StatelessWidget {
                 debugPrint("\n\n------------Access Company--------------\n");
                 ApiServices()
                     .request(ApiService.POST, ApiUtils.accessCompanyAPI,
-                        queryParameters: {"C05101": 35},
-                        authToken: ApiUtils.authToken)
+                    queryParameters: {"C05101": 35},
+                    authToken: ApiUtils.authToken)
                     .then((response) {
                   debugPrint("Response Data: ${response.data}");
                   debugPrint("NewToken Data: ${ApiUtils.authToken}");
@@ -65,8 +65,8 @@ class HomeScreen extends StatelessWidget {
                 debugPrint("\n\n------------Account Master--------------\n");
                 ApiServices()
                     .request(ApiService.POST, ApiUtils.accountMasterAPI,
-                        data: ApiUtils.accountMasterPayLoad,
-                        authToken: ApiUtils.authToken)
+                    data: ApiUtils.accountMasterPayLoad,
+                    authToken: ApiUtils.authToken)
                     .then((response) {
                   debugPrint("Response Data: ${response.data}");
                   debugPrint("NewToken Data: ${ApiUtils.authToken}");
